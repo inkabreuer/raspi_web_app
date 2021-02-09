@@ -1,0 +1,15 @@
+version: '2'
+services:
+  gpio_database:
+    build: ./gpio_database_generator
+    volumes:
+      - ./gpio_database_generator:/gpio_database_generator
+    links:
+      - db
+
+  db:
+    image: "arm32v7/postgres:9.6"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: hunter2
