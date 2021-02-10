@@ -3,4 +3,4 @@ from django.http import HttpResponse
 
 # Create your views here.
 def gpio(request):
-    return HttpResponse('GPIO OUTPUT!')
+    return HttpResponse('GPIO OUTPUT!test3')

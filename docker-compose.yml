@@ -10,7 +10,7 @@ services:
   django_web_app:
     build: ./django_web_app
     volumes:
-      - ./django_web_app/:/django_web_app
+      - ./django_web_app/:/raspi_web_app/django_web_app
     ports:
      - "8000:8000"
     links:
