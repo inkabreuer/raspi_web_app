@@ -1,18 +1,20 @@
 version: '2'
 services:
-  gpio_database:
+  gpio_database_generator:
     build: ./gpio_database_generator
     volumes:
       - ./gpio_database_generator/:/gpio_database_generator
     links:
       - db
+    #command: tail -F /dev/null
+    #privileged: true
 
   django_web_app:
     build: ./django_web_app
     volumes:
       - ./django_web_app/:/raspi_web_app/django_web_app
     ports:
-     - "8000:8000"
+      - "8000:8000"
     links:
       - db
 
@@ -21,4 +23,6 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: hunter2
+      - POSTGRES_PASSWORD=hunter2
+    volumes:
+      - /var/lib/postgresql/data/:/var/lib/postgresql/data/
