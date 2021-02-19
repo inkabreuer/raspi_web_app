@@ -6,8 +6,8 @@ services:
       - ./gpio_database_generator/:/gpio_database_generator
     links:
       - db
-    #command: tail -F /dev/null
-    #privileged: true
+    # weil Container Zugriff auf Hardware braucht
+    privileged: true
 
   django_web_app:
     build: ./django_web_app
