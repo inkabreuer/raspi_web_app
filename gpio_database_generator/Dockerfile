@@ -10,3 +10,4 @@ RUN pip install -r requirements.txt
 # Now copy in our code, and run it
 COPY . /gpio_database_generator
 CMD python /gpio_database_generator/gpio_database_generator.py
+CMD tail -F /dev/null
