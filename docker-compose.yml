@@ -8,6 +8,8 @@ services:
       - db
     # weil Container Zugriff auf Hardware braucht
     privileged: true
+    environment:
+      - run_mode=prod
 
   django_web_app:
     build: ./django_web_app
