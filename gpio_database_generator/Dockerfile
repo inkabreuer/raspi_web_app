@@ -12,4 +12,4 @@ COPY . /gpio_database_generator
 #zum entwickeln
 #CMD tail -F /dev/null
 #ausführen
- CMD python /gpio_database_generator/gpio_database_generator.py
+CMD python gpio_database_generator.py
