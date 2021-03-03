@@ -6,10 +6,16 @@ services:
       - ./gpio_database_generator/:/gpio_database_generator
     links:
       - db
+    depends_on:
+      - db
     # weil Container Zugriff auf Hardware braucht
     privileged: true
     environment:
       - run_mode=prod
+      # für docker log output
+      - PYTHONUNBUFFERED=TRUE
+    networks:
+      - raspi_web_network
 
   django_web_app:
     build: ./django_web_app
@@ -19,12 +25,23 @@ services:
       - "8000:8000"
     links:
       - db
+    depends_on:
+      - db
+    networks:
+      - raspi_web_network
 
   db:
     image: "arm32v7/postgres:9.6"
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=hunter2
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     volumes:
       - /var/lib/postgresql/data/:/var/lib/postgresql/data/
+    networks:
+      - raspi_web_network
+
+networks:
+  raspi_web_network:
