@@ -25,7 +25,7 @@ HUMAN_DETECT = 0x0D
 bus = smbus2.SMBus(DEVICE_BUS)
 
 # Connect to Postgres Docker
-connection = psycopg2.connect("dbname='postgres' user='postgres' password='hunter2' host='db' port='5432'")
+connection = psycopg2.connect("dbname='postgres' user='postgres' password='postgres' host='db' port='5432'")
 cursor = connection.cursor()
 
 
