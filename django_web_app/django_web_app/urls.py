@@ -21,4 +21,6 @@ from gpio import views
 urlpatterns = [
     url(r'^$', views.gpio, name='gpio'),
     url(r'^admin/', admin.site.urls),
+    url(r'^HubCache/', views.display_HubCache, name='HubCache'),
+    url(r'^HubData/', views.display_HubData, name='HubData')
 ]
