@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   gpio_database_generator:
     build: ./gpio_database_generator
@@ -8,6 +8,7 @@ services:
       - db
     depends_on:
       - db
+    restart: always
     # weil Container Zugriff auf Hardware braucht
     privileged: true
     environment:
@@ -27,6 +28,7 @@ services:
       - db
     depends_on:
       - db
+    restart: always
     networks:
       - raspi_web_network
 
@@ -38,8 +40,10 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - PGDATA=/var/lib/postgresql/data/raspi_web_app_data
     volumes:
-      - /var/lib/postgresql/data/:/var/lib/postgresql/data/
+      - /mnt/data_storage/raspi_web_app/:/var/lib/postgresql/data/
+    #- /var/lib/postgresql/data/:/var/lib/postgresql/data/
     networks:
       - raspi_web_network
 
