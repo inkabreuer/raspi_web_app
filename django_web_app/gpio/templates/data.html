@@ -1,0 +1,55 @@
+{% load static %}<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ name }}</title>
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  </head>
+ <body>
+    <div class="container">
+      <ol class="breadcrumb my-4">
+        <li class="breadcrumb-item active">{{ name }}</li>
+      </ol>
+      <table class="table">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Timestamp</th>
+            <th>temp reg</th>
+            <th>light reg l</th>
+            <th>light reg h</th>
+            <th>status reg</th>
+            <th>on board temp reg</th>
+            <th>on board humidity reg</th>
+            <th>on board sensor error</th>
+            <th>bmp280 temp reg</th>
+            <th>bmp280 pressure reg l</th>
+            <th>bmp280 pressure reg m</th>
+            <th>bmp280 pressure reg h</th>
+            <th>bmp280 status</th>
+            <th>human detect</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for column in data %}
+            <tr>
+              <td nowrap> {{ column.timestamp }}</td>
+              <td>{{ column.temp_reg }}</td>
+              <td>{{ column.light_reg_l }}</td>
+              <td>{{ column.light_reg_h }}</td>
+              <td>{{ column.status_reg }}</td>
+              <td>{{ column.on_board_temp_reg }}</td>
+              <td>{{ column.on_board_humidity_reg }}</td>
+              <td>{{ column.on_board_sensor_error }}</td>
+              <td>{{ column.bmp280_temp_reg }}</td>
+              <td>{{ column.bmp280_pressure_reg_l }}</td>
+              <td>{{ column.bmp280_pressure_reg_m }}</td>
+              <td>{{ column.bmp280_pressure_reg_h }}</td>
+              <td>{{ column.bmp280_status }}</td>
+              <td>{{ column.human_detect }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
