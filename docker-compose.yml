@@ -46,6 +46,7 @@ services:
     #- /var/lib/postgresql/data/:/var/lib/postgresql/data/
     networks:
       - raspi_web_network
+    restart: always
 
 networks:
   raspi_web_network:
